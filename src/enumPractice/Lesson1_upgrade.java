@@ -2,7 +2,8 @@ package enumPractice;
 
 import java.util.Scanner;
 
-public class Lesson1 {
+
+public class Lesson1_upgrade {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Planet myPlanet = Planet.JUPITER;
@@ -26,3 +27,4 @@ public class Lesson1 {
 
     }
 }
+
