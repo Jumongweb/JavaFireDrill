@@ -51,9 +51,17 @@ public class TicTacToe {
     public static void selectPlayer(){
         char[] playerAvatar = new char[2];
         readyToPlay();
-        for (int count = 0; count < 2; count++){
-            System.out.printf("Player %s Choose your avatar: 'X' or 'O' ", count + 1);
-            playerAvatar[count] = scanner.next().charAt(0);
+        try{
+            for (int count = 0; count < 2; count++){
+                if (count == 1) System.out.println("PlayerOne selected " + playerAvatar[0]);
+                System.out.printf("Player %s Choose your avatar: 'X' or 'O': ", count + 1);
+                playerAvatar[count] = scanner.next().charAt(0);
+            }
+            if (playerAvatar[0] == playerAvatar[1]){
+                throw new SameAvatarError("Oga, you suppose get sense ooo, why will you select the same thing with player one");
+            }
+        } catch (SameAvatarError e){
+            System.out.println(e);
         }
 
         playerOne = playerAvatar[0];
