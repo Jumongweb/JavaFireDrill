@@ -1,8 +1,12 @@
 package backToSenderLogistics;
 
+import myDiary.exceptions.InvalidEntryException;
+
 public class LogisticServices {
 
     public static int riderPayment(int delivery){
+        if (delivery < 0) throw new InvalidDeliveryException("Invalid delivery");
+
         int numberOfPackages = 100;
         int basePay = 5000;
         int riderWage = 0;
@@ -17,7 +21,7 @@ public class LogisticServices {
         } else{
             amountPerParcel = 500;
         }
-        if (!(delivery < 0)) riderWage = amountPerParcel * delivery + basePay;
+        riderWage = amountPerParcel * delivery + basePay;
         return riderWage;
     }
 }

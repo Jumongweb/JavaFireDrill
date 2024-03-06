@@ -3,6 +3,7 @@ package backToSenderLogistics;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class LogisticsServicesTest {
 
@@ -32,9 +33,14 @@ public class LogisticsServicesTest {
     }
 
     @Test
-    public void test_thatNegativeDelivery_EmployeeEarnsZero(){
-        int expected = 0;
-        assertEquals(expected, LogisticServices.riderPayment(-80));
+    public void test_thatNegativeDelivery_LeadsToException(){
+        assertThrows(InvalidDeliveryException.class, ()->LogisticServices.riderPayment(-23));
+    }
+
+    @Test
+    public void test_thatIfEmployee_deliverNothing_EarnsOnlyBasePay(){
+        int expected = 5000;
+        assertEquals(expected, LogisticServices.riderPayment(0));
     }
 
 }
