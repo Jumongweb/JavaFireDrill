@@ -8,7 +8,15 @@ public class Girl {
     }
 
     public void clean(){
+        problem.clean();
+    }
 
+    public void spend(){
+        problem.spend();
+    }
+
+    public void cook(){
+        problem.cook();
     }
 
     public void setProblem(BoyFriend problem){
