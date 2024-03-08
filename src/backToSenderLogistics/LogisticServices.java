@@ -5,7 +5,7 @@ import myDiary.exceptions.InvalidEntryException;
 public class LogisticServices {
 
     public static int riderPayment(int delivery){
-        if (delivery < 0) throw new InvalidDeliveryException("Invalid delivery");
+        validate(delivery);
 
         int numberOfPackages = 100;
         int basePay = 5000;
@@ -23,5 +23,9 @@ public class LogisticServices {
         }
         riderWage = amountPerParcel * delivery + basePay;
         return riderWage;
+    }
+
+    private static void validate(int delivery) {
+        if (delivery < 0) throw new InvalidDeliveryException("Invalid delivery");
     }
 }
