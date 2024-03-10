@@ -3,7 +3,7 @@ package estore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EstoreTest {
 
@@ -15,22 +15,72 @@ public class EstoreTest {
     }
 
     @Test
+    public void testThatIHaveAE_StoreWithNoAdmin(){
+        assertEquals(0, estore.getNumberOfAdmin());
+    }
+
+    @Test
+    public void testThatIHaveAE_StoreWithNoAdmin_AddAdmin(){
+        assertEquals(0, estore.getNumberOfAdmin());
+        estore.createAdmin(
+                24, "lawal@semicolon.com",
+                "No 6, Genius street, Toronto, Canada","Jumong",
+                "password","08193849844"
+        );
+        assertEquals(1, estore.getNumberOfAdmin());
+    }
+
+    @Test
+    public void testThatEstoreCanHaveMultipleAdmin(){
+        assertEquals(0, estore.getNumberOfAdmin());
+        estore.createAdmin(
+                19, "toheeb@semicolon.com",
+                "No 4, Billionaire street, Lekki, Nigeria","toheeb",
+                "password","08116849844"
+        );
+        estore.createAdmin(
+                24, "lawal@semicolon.com",
+                "No 6, Genius street, Toronto, Canada","Jumong",
+                "password","08193849844"
+        );
+        estore.createAdmin(
+                24, "banji@semicolon.com",
+                "No 9, Paradise street, London","Banji",
+                "password","08132435323"
+        );
+        assertEquals(3, estore.getNumberOfAdmin());
+    }
+
+
+    @Test
     public void testThatIHaveAE_StoreWithNoUser(){
         assertEquals(0, estore.getNumberOfUser());
     }
 
     @Test
-    public void testThatMyE_StoreCanAddSeller(){
+    public void testThatE_StoreCanAddSellerWithAdminApproval(){
         Seller seller1 = new Seller(
-                20, "jumong@semicolon.com","No 6, Paradise street," +
-                "Sans Fransico, America","Jumong", "password","08193849844"
+                20, "jumong@semicolon.com","No 6, Paradise street, Sans Fransico, America",
+                "Jumong", "password","08193849844"
                 );
         estore.add(seller1);
         assertEquals(1, estore.getNumberOfUser());
     }
 
     @Test
-    public void testThatMyE_StoreCanAddMoreThanOneSeller(){
+    public void testThatE_StoreThrowsExceptionIfUserIsAddedWithoutAdminApproval(){
+        assertEquals(0, estore.getNumberOfUser());
+        Seller seller1 = new Seller(
+                12, "jumong@semicolon.com","No 6, Paradise street, Sans Fransico, America",
+                "Jumong", "password","08193849844"
+        );
+        assertThrows(NotApproveUserException.class, ()->estore.add(seller1));
+
+        assertEquals(0, estore.getNumberOfUser());
+    }
+
+    @Test
+    public void testThatMyE_StoreAndCanAddMoreThanOneSeller(){
         assertEquals(0, estore.getNumberOfUser());
         Seller seller1 = new Seller(
                 20, "jumong@semicolon.com",
@@ -61,11 +111,6 @@ public class EstoreTest {
                 "Sans Fransico, America","Jumong", "password","08193849844"
             );
 
-        Admin admin1 = new Admin(
-                24, "lawal@semicolon.com",
-                "No 6, Genius street, Toronto, Canada","Jumong",
-                "password","08193849844"
-              );
         Customer customer1 = new Customer(
                 24, "lawal@semicolon.com",
                 "No 6, Genius street, Toronto, Canada","Jumong",
@@ -74,8 +119,7 @@ public class EstoreTest {
 
         estore.add(seller1);
         estore.add(customer1);
-        estore.add(admin1);
-        assertEquals(3, estore.getNumberOfUser());
+        assertEquals(2, estore.getNumberOfUser());
     }
 
     @Test
@@ -86,16 +130,11 @@ public class EstoreTest {
                 "Sans Fransico, America","Jumong", "password","08193849844"
         );
         assertEquals(0, seller1.getNumberOfSellerItems());
-        Product product1 = new Product(1, "Airconditioner", 55_000.50, "R-410 Gas", ProductCategory.ELECTRONICS);
+        Product product1 = new Product(1, "Airconditioner", 55000.50, "R-410 Gas", ProductCategory.ELECTRONICS);
         Item item1 = new Item(4, product1);
         seller1.add(item1);
-
         assertEquals(1, seller1.getNumberOfSellerItems());
-        Admin admin1 = new Admin(
-                24, "lawal@semicolon.com",
-                "No 6, Genius street, Toronto, Canada","Jumong",
-                "password","08193849844"
-        );
+
         Customer customer1 = new Customer(
                 24, "lawal@semicolon.com",
                 "No 6, Genius street, Toronto, Canada","Jumong",
@@ -104,8 +143,7 @@ public class EstoreTest {
 
         estore.add(seller1);
         estore.add(customer1);
-        estore.add(admin1);
-        assertEquals(3, estore.getNumberOfUser());
+        assertEquals(2, estore.getNumberOfUser());
     }
 
 
