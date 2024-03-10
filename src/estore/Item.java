@@ -10,6 +10,9 @@ public class Item {
         this.product = product;
     }
 
+    public void set(int quantityOfProduct){
+        this.quantityOfProduct = quantityOfProduct;
+    }
     public int getQuantityOfProduct() { return quantityOfProduct; }
     public Product getProduct(){ return product; }
 

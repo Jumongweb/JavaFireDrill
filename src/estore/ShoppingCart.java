@@ -28,4 +28,14 @@ public class ShoppingCart {
         if (searchItem == null) throw new ItemNotFoundException("Item not in the cart");
         return searchItem;
     }
+
+    public void remove(Item item) {
+        Item itemToBeRemove = find(item);
+        cart.remove(itemToBeRemove);
+    }
+
+    public void update(Item item, int quantityToBeAdded) {
+        Item itemToUpdate = find(item);
+        itemToUpdate.set(itemToUpdate.getQuantityOfProduct() + quantityToBeAdded);
+    }
 }

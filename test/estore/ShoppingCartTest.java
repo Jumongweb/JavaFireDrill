@@ -3,6 +3,7 @@ package estore;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ShoppingCartTest {
 
@@ -66,6 +67,21 @@ public class ShoppingCartTest {
     }
 
     @Test
+    public void testThatMyCartCanFindItemAndUpdateTheQuantityOfTheParticularItem(){
+        ShoppingCart shoppingCart = new ShoppingCart();
+        assertEquals(0, shoppingCart.numberOfItems());
+        Product product3 = new Product(3, "Jeans", 2000, "Jeans for men", ProductCategory.CLOTHING);
+        Item item1 = new Item(4, product3);
+        shoppingCart.add(item1);
+        assertEquals(1, shoppingCart.numberOfItems());
+
+        Item foundItem = shoppingCart.find(item1);
+        assertEquals(4, foundItem.getQuantityOfProduct());
+        shoppingCart.update(item1, 2);
+        assertEquals(6, foundItem.getQuantityOfProduct());
+    }
+
+    @Test
     public void testThatMyCartCanFindAndReturnTheProductType(){
         ShoppingCart shoppingCart = new ShoppingCart();
         assertEquals(0, shoppingCart.numberOfItems());
@@ -108,30 +124,25 @@ public class ShoppingCartTest {
         assertEquals(2000, foundItem.getProduct().getPrice());
     }
 
+
     @Test
-    public void testThatMyCartCanRemoveItem(){
+    public void testThatItemsCanBeRemovedFromTheCart(){
         ShoppingCart shoppingCart = new ShoppingCart();
         assertEquals(0, shoppingCart.numberOfItems());
         Product product1 = new Product(1, "Knife", 1500, "Used for cutting vegetables", ProductCategory.UTENSILS);
-        Product product2 = new Product(2, "Palm Oil", 5000, "Golden penny soya oil", ProductCategory.GROCERIES);
-        Product product3 = new Product(3, "Jean", 2000, "Stock jeans for men", ProductCategory.CLOTHING);
+        Product product2 = new Product(3, "Jean", 2000, "Stock jeans for men", ProductCategory.CLOTHING);
         Item item1 = new Item(2, product1);
         Item item2 = new Item(1, product2);
-        Item item3 = new Item(4, product3);
         shoppingCart.add(item1);
         shoppingCart.add(item2);
-        shoppingCart.add(item3);
-        assertEquals(3, shoppingCart.numberOfItems());
-        Item foundItem = shoppingCart.find(item3);
-        System.out.println(foundItem);
-        assertEquals(2000, foundItem.getProduct().getPrice());
+        assertEquals(2, shoppingCart.numberOfItems());
+        shoppingCart.remove(item1);
+        assertEquals(1, shoppingCart.numberOfItems());
     }
 
 
-
-
-    /* @Test
-    public void testThatMyCartThrowExceptionIfItCannotbeFound(){
+    @Test
+    public void testThatMyCartThrowExceptionIfNotInTheCartIsSearchedFor(){
         ShoppingCart shoppingCart = new ShoppingCart();
         assertEquals(0, shoppingCart.numberOfItems());
         Product product1 = new Product(1, "Knife", 2000, "Hades kitchen knife", ProductCategory.UTENSILS);
@@ -145,7 +156,24 @@ public class ShoppingCartTest {
         shoppingCart.add(item2);
         shoppingCart.add(item3);
         assertEquals(3, shoppingCart.numberOfItems());
-    } */
+
+        shoppingCart.remove(item2);
+        assertEquals(2, shoppingCart.numberOfItems());
+        assertThrows(ItemNotFoundException.class, ()->shoppingCart.find(item2));
+    }
+
+    @Test
+    public void testRemoveItemNotInTheList_CartThrowAnException(){
+        ShoppingCart shoppingCart = new ShoppingCart();
+        assertEquals(0, shoppingCart.numberOfItems());
+        Product product1 = new Product(1, "Knife", 2000, "Used for cutting vegetables", ProductCategory.UTENSILS);
+        Product product2 = new Product(3, "Jeans", 2000, "Jeans for men", ProductCategory.CLOTHING);
+        Item item1 = new Item(2, product1);
+        Item item2 = new Item(1, product2);
+        shoppingCart.add(item1);
+        assertEquals(1, shoppingCart.numberOfItems());
+        assertThrows(ItemNotFoundException.class, ()->shoppingCart.remove(item2));
+    }
 
 
 }
