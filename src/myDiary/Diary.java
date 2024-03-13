@@ -37,7 +37,7 @@ public class Diary {
 
     public void unlockDiary(String password) {
         if (!(this.password.equals(password))) throw new InvalidPasswordException("Invalid password");
-            this.isLocked = false;
+        this.isLocked = false;
 
     }
 

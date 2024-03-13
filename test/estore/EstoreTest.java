@@ -51,7 +51,6 @@ public class EstoreTest {
         assertEquals(3, estore.getNumberOfAdmin());
     }
 
-
     @Test
     public void testThatIHaveAE_StoreWithNoUser(){
         assertEquals(0, estore.getNumberOfUser());

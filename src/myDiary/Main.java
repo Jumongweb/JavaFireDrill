@@ -11,8 +11,17 @@ public class Main {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        createDiary();
         displayMenu();
+    }
 
+    private static void createDiary() {
+        System.out.println("Welcome To Hades Diary ");
+        System.out.println("Your secret is safe with us");
+        String username = input("Enter your username: ");
+        String password = input("Enter your password: ");
+        diary = new Diary(username, password);
+        createDiary();
     }
 
     private static void displayMenu() {
@@ -28,10 +37,10 @@ public class Main {
         print("7. Exit");
         int response = Integer.parseInt(input("Enter your response: "));
         switch (response){
-            case 1 -> createEntry();
-            case 2 -> unlockDiary();
-            case 3 -> lockDiary();
-            case 7 -> exit();
+            //case 1 -> createEntry();
+            //case 2 -> unlockDiary();
+            //case 3 -> lockDiary();
+            //case 7 -> exit();
             default -> print("Number should be between 1-7");
         }
         } catch (NumberFormatException e){
@@ -40,7 +49,7 @@ public class Main {
         }
     }
 
-    private static void lockDiary() {
+    /*private static void lockDiary() {
         try {
             String passkey = input("Entry password: ");
             diary = new Diary(diary.getUsername(), passkey);
@@ -98,7 +107,7 @@ public class Main {
         JOptionPane.showInputDialog("Goodbye!!!");
         System.exit(-911);
     }
-
+*/
     public static String input(String input){
         print(input);
         //return scanner.nextLine();
