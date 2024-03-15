@@ -3,6 +3,8 @@ package turtleGraphics;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.text.Position;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static turtleGraphics.Direction.*;
 
@@ -110,4 +112,13 @@ public class TurtleGraphicsTest {
         turtleGraphics.turnLeft();
         assertSame(NORTH, turtleGraphics.currentDirection());
     }
+
+    @Test
+    public void testThatTurtleIsFaceEastAndItCanMoveForward(){
+        assertSame(EAST, turtleGraphics.currentDirection());
+        int[] expectedPosition = {0,0};
+       // Position position = new turtleGraphics.Position(0,0);
+        //assertEquals(expectedPosition, Position.currentPosition());
+    }
+
 }

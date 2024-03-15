@@ -6,12 +6,16 @@ import java.util.List;
 public class Estore {
 
     private List<Admin> admins;
-    private List<User> users;
+    private List<Seller> sellers;
+    private List<Customer> customers;
+    private List<Product> Product;
 
     private boolean isApproved = true;
     public Estore(){
-        users = new ArrayList<>();
         admins = new ArrayList<>();
+        sellers = new ArrayList<>();
+        customers = new ArrayList<>();
+        Product = new ArrayList<>();
     }
 
     public Admin createAdmin(int age, String email, String homeAddress, String name, String password, String phone){
@@ -20,13 +24,8 @@ public class Estore {
         return admin;
     }
 
-    public int getNumberOfUser() {
-        return users.size();
-    }
-
-    public void add(User user) {
-        if (!(isApproved(user))) throw new NotApproveUserException("User not approved");
-        users.add(user);
+    public int getNumberOfSeller() {
+        return sellers.size();
     }
 
 
@@ -38,5 +37,18 @@ public class Estore {
 
     public int getNumberOfAdmin() {
         return admins.size();
+    }
+
+    public Seller add(Seller seller) {
+        sellers.add(seller);
+        return seller;
+    }
+    public Customer add(Customer customer) {
+        customers.add(customer);
+        return customer;
+    }
+
+    public int getNumberOfCustomer() {
+        return customers.size();
     }
 }
