@@ -11,7 +11,7 @@ public class SevenSegmentDisplay {
 
     private static String lightSwitch;
     private String a;
-    //practicing of git reset
+    // front practicing of git reset
     // Expecting not to see this line only on tester
     // add comment to tester
     public SevenSegmentDisplay(String input) {
