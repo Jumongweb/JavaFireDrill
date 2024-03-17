@@ -68,6 +68,27 @@ public class Main {
         }
     }
 
+    private static void multipleTransfer(){
+        try {
+            System.out.println("Enter amount to transfer: ");
+            int amount = scanner.nextInt();
+            System.out.println("How many account do you want to credit: ");
+            int numberOfAccount = scanner.nextInt();
+            System.out.println("Enter sender account number: ");
+            String sender = scanner.nextLine();
+            System.out.println("Enter account numbers you want to transfer to and negative number to quit: ");
+
+            int[] accountNumbers = new int[numberOfAccount];
+            int count = 0;
+            while (scanner.nextInt() < numberOfAccount){
+                accountNumbers[count] = scanner.nextInt();
+            }
+            //bank.multipleTransfer(amount, );
+        } catch (Exception e) {
+            print(e.getMessage());
+        }
+    }
+
     private static void defaultCase(){
         print("Select from 1 - 7 only");
         mainMenu();

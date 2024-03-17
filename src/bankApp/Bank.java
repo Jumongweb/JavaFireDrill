@@ -54,6 +54,18 @@ public class Bank {
         }
     }
 
+    public void multipleTransfer(int amount, Account... accountsToCredit){
+        int count = 0;
+        for (int i = 0; i < accounts.size(); i++){
+            if (count == accountsToCredit.length){
+                break;
+            }
+            if (accounts.contains(accountsToCredit[i])) {
+                accountsToCredit[i].deposit(amount);
+            }
+            count++;
+        }
+    }
     public int checkBalance(int number, String pin) {
         Account account = findAcccount(number);
         return account.checkBalance(pin);

@@ -116,9 +116,9 @@ public class TurtleGraphicsTest {
     @Test
     public void testThatTurtleIsFaceEastAndItCanMoveForward(){
         assertSame(EAST, turtleGraphics.currentDirection());
-        int[] expectedPosition = {0,0};
-       // Position position = new turtleGraphics.Position(0,0);
-        //assertEquals(expectedPosition, Position.currentPosition());
+        assertEquals(new turtlePosition(0, 0), turtleGraphics.getCurrentPosition());
+        //turtleGraphics.moveForward(5, sketchBoard);
     }
+
 
 }

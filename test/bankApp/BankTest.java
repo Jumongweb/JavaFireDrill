@@ -128,4 +128,23 @@ public class BankTest {
         bank.remove(10001);
         assertEquals(1, bank.getNumberOfAccounts());
     }
+
+    @Test
+    public void testThatMyBankCanPerformMultipleTransfer(){
+        assertEquals(0, bank.getNumberOfAccounts());
+        Account a1 = bank.registerCustomer("Lawal", "Toheeb", "1234");
+        Account a2 = bank.registerCustomer("King", "Jumong", "9876");
+        Account a3 = bank.registerCustomer("Prince", "Jumong", "9876");
+        Account a4 = bank.registerCustomer("GrandPrince", "Jumong", "9876");
+        assertEquals(4, bank.getNumberOfAccounts());
+        assertEquals(0, a1.checkBalance("1234"));
+        assertEquals(0, a2.checkBalance("9876"));
+        assertEquals(0, a3.checkBalance("9876"));
+        assertEquals(0, a4.checkBalance("9876"));
+        bank.multipleTransfer(5000, a1,a2,a3);
+        assertEquals(5000, a1.checkBalance("1234"));
+        assertEquals(5000, a2.checkBalance("9876"));
+        assertEquals(5000, a3.checkBalance("9876"));
+        assertEquals(0, a4.checkBalance("9876"));
+    }
 }
