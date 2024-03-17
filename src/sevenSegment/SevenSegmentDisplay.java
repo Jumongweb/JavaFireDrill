@@ -9,7 +9,7 @@ public class SevenSegmentDisplay {
         System.out.println(board[0][0]);
     }
 
-    private String lightSwitch;
+    private static String lightSwitch;
     private String a;
     //practicing of git reset
     // Expecting not to see this line only on tester
