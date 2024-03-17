@@ -10,6 +10,7 @@ public class SevenSegmentDisplay {
     }
 
     private String lightSwitch;
+    private String a;
     //practicing of git reset
     // Expecting not to see this line only on tester
     // add comment to tester
