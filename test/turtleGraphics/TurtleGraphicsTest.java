@@ -11,6 +11,7 @@ import static turtleGraphics.Direction.*;
 public class TurtleGraphicsTest {
 
     private TurtleGraphics turtleGraphics;
+    private SketchBoard sketchBoard;
     @BeforeEach
     public void intializeTurtle(){
         turtleGraphics = new TurtleGraphics();
@@ -117,8 +118,60 @@ public class TurtleGraphicsTest {
     public void testThatTurtleIsFaceEastAndItCanMoveForward(){
         assertSame(EAST, turtleGraphics.currentDirection());
         assertEquals(new turtlePosition(0, 0), turtleGraphics.getCurrentPosition());
-        //turtleGraphics.moveForward(5, sketchBoard);
+        turtleGraphics.moveForward(5, sketchBoard);
+        assertEquals(new turtlePosition(0, 4), turtleGraphics.getCurrentPosition());
     }
 
+    @Test
+    public void testThatTurtleIsFaceEastAndOnColumn4_TurnRightAndMove5Step_TurtleIsOnRow4Column4(){
+        assertSame(EAST, turtleGraphics.currentDirection());
+        assertEquals(new turtlePosition(0, 0), turtleGraphics.getCurrentPosition());
+        turtleGraphics.moveForward(5, sketchBoard);
+        turtleGraphics.turnRight();
+        assertSame(SOUTH, turtleGraphics.currentDirection());
+        turtleGraphics.moveForward(5, sketchBoard);
+        assertEquals(new turtlePosition(4, 4), turtleGraphics.getCurrentPosition());
+    }
+
+    @Test
+    public void testThatTurtleIsOnRow4Column4_MoveForward5StepAndTurtleIsOnRow4Column0(){
+        assertSame(EAST, turtleGraphics.currentDirection());
+        assertEquals(new turtlePosition(0, 0), turtleGraphics.getCurrentPosition());
+        turtleGraphics.moveForward(5, sketchBoard);
+        turtleGraphics.turnRight();
+        assertSame(SOUTH, turtleGraphics.currentDirection());
+        turtleGraphics.moveForward(5, sketchBoard);
+        assertEquals(new turtlePosition(4, 4), turtleGraphics.getCurrentPosition());
+        turtleGraphics.turnRight();
+        assertSame(WEST, turtleGraphics.currentDirection());
+        turtleGraphics.moveForward(5, sketchBoard);
+        assertEquals(new turtlePosition(4, 0), turtleGraphics.getCurrentPosition());
+    }
+
+    @Test
+    public void testThatTurtleIsFacingNorthOnRow4Column0_MoveForward5StepAndTurtleIsOnRow0Column0(){
+        assertSame(EAST, turtleGraphics.currentDirection());
+        assertEquals(new turtlePosition(0, 0), turtleGraphics.getCurrentPosition());
+        turtleGraphics.moveForward(5, sketchBoard);
+        turtleGraphics.turnRight();
+        assertSame(SOUTH, turtleGraphics.currentDirection());
+        turtleGraphics.moveForward(5, sketchBoard);
+        assertEquals(new turtlePosition(4, 4), turtleGraphics.getCurrentPosition());
+        turtleGraphics.turnRight();
+        assertSame(WEST, turtleGraphics.currentDirection());
+        turtleGraphics.moveForward(5, sketchBoard);
+        assertEquals(new turtlePosition(4, 0), turtleGraphics.getCurrentPosition());
+        turtleGraphics.turnRight();
+        assertSame(NORTH, turtleGraphics.currentDirection());
+        turtleGraphics.moveForward(5, sketchBoard);
+        assertEquals(new turtlePosition(0, 0), turtleGraphics.getCurrentPosition());
+    }
+
+    @Test
+    public void testThatBoardIs20By20(){
+        int[][] expected = new int[20][20];
+        assertArrayEquals(expected, sketchBoard.getBoard());
+
+    }
 
 }
