@@ -10,7 +10,6 @@ public class SevenSegmentDisplay {
     }
 
     private String lightSwitch;
-    //practicing of git reset of one
     public SevenSegmentDisplay(String input) {
         this.lightSwitch = input;
         for (int i = 0; i < 5; i++) {
