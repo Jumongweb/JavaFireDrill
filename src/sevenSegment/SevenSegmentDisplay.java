@@ -11,6 +11,8 @@ public class SevenSegmentDisplay {
 
     private String lightSwitch;
     //practicing of git reset
+    // Expecting not to see this line only on tester
+    // add comment to tester
     public SevenSegmentDisplay(String input) {
         this.lightSwitch = input;
         for (int i = 0; i < 5; i++) {
