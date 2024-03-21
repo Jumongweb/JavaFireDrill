@@ -171,6 +171,25 @@ public class TurtleGraphicsTest {
     public void testThatBoardIs20By20(){
         int[][] expected = new int[20][20];
         assertArrayEquals(expected, sketchBoard.getBoard());
+    }
+
+    @Test
+    public void penIsUp_turtleMoveTenTimes_scoreBoardNotMarked() {
+        assertTrue(turtleGraphics.isPenUp());
+        assertEquals(EAST, turtleGraphics.currentDirection());
+        turtleGraphics.moveForward(5, sketchBoard);
+        assertEquals(new turtlePosition(0, 4), turtleGraphics.getCurrentPosition());
+        /*int[][] expected = sketchBoard.getBoard();
+        assertEquals(0, expected[0][0]);
+        assertEquals(0, expected[0][1]);
+        assertEquals(0, expected[0][2]);
+        assertEquals(0, expected[0][3]);
+        assertEquals(0, expected[0][4]);
+        assertEquals(0, expected[0][5]);
+        assertEquals(0, expected[0][6]);
+        assertEquals(0, expected[0][7]);
+        assertEquals(0, expected[0][8]);
+        assertEquals(0, expected[0][9]); */
 
     }
 
