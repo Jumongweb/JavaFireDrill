@@ -13,8 +13,5 @@ public class MostOccurTest {
         assertArrayEquals(expected, MostOccur.getHighestOccur(input));
     }
 
-    @Test
-    public void testSecondInput(){
-        int[] input2 = {2,3,3,5,6,7};
-    }
+
 }
