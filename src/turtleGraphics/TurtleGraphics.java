@@ -18,13 +18,9 @@ public class TurtleGraphics {
         isPenUp = true;
     }
 
-    public turtlePosition getCurrentPosition(){
-        return currentPosition;
-    }
+    public turtlePosition getCurrentPosition(){ return currentPosition; }
 
-    public Direction currentDirection() {
-        return currentDirection;
-    }
+    public Direction currentDirection() { return currentDirection; }
 
     public void turnLeft() {
         currentDirection = currentDirection.turnLeft();

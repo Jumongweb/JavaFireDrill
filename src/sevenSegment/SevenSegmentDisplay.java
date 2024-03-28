@@ -11,9 +11,11 @@ public class SevenSegmentDisplay {
 
     private String lightSwitch;
     public SevenSegmentDisplay(String input) {
+        // practising git checkout1
+        // This should not be here
         this.lightSwitch = input;
-        for (int i = 0; i < 5; i++) {
-            if (lightSwitch.charAt(0) == 1 && lightSwitch.charAt(7) == 1) {
+        for (int i = 0; i < 5;  i++) {
+            if (lightSwitch.charAt(0) == '1' && lightSwitch.charAt(7) == '1') {
                 this.board[0][0] = 1;
             }
 
@@ -36,9 +38,9 @@ public class SevenSegmentDisplay {
 
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 4; j++) {
-                if (board[i][j] == 1) System.out.print("* ");
+                if (board[i][j] == '1') System.out.print("* ");
 
-                if (this.lightSwitch.charAt(1) == 1) System.out.print("* ");
+                if (this.lightSwitch.charAt(1) == '1') System.out.print("* ");
                 else System.out.println(" ");
                 if (this.lightSwitch.charAt(2) == 1) System.out.print("* ");
                 else System.out.println(" ");
