@@ -1,0 +1,2 @@
+Hello World, my first personal java stream
+ This should be appended to my file and it should be on a new line
