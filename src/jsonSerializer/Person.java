@@ -1,10 +1,28 @@
 package jsonSerializer;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Person {
     private String name;
+
+    @JsonProperty("dob")
     private String dateOfBirth;
     private String phoneNumber;
    private Sex gender;
+
+    public Person(String name, String dateOfBirth, String phoneNumber, Sex gender) {
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+    }
+
+    @Override
+    public String toString() {
+        return "Person----->{name: " + name + " dateOfBirth: " + dateOfBirth + " phoneNumber: " + phoneNumber + " gender: " + gender + "}";
+    }
 
     public String getName() {
         return name;

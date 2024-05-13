@@ -1,10 +1,11 @@
 package jsonSerializer;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JsonSerialzer {
+public class JsonSerializer {
 
-    public static String serializer( Person person){
+    public static String serialize( Person person){
         try {
             ObjectMapper mapper = new ObjectMapper();
             String json = mapper.writeValueAsString(person);
@@ -14,5 +15,11 @@ public class JsonSerialzer {
             throw new RuntimeException(exception);
         }
     }
+
+    public static Person deserialize(String json) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(json, Person.class);
+    }
+
 
 }
