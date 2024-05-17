@@ -6,7 +6,7 @@ import java.io.FileWriter;
 
 public class BufferedReaderPractise {
     public static void main(String[] args) {
-        String location = "C:\\Users\\DELL\\IdeaProjects\\javaFireDrillOne\\src\\dietel_c15\\output.txt";
+        String location = "C:\\Users\\DELL\\IdeaProjects\\javaFireDrillOne\\src\\dietel_c15\\output2.txt";
         try{
             BufferedReader reader = new BufferedReader(new FileReader(location));
             reader.readLine();
