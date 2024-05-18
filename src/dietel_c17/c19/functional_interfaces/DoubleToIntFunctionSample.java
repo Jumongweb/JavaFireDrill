@@ -1,4 +1,4 @@
-package dietel_c17.c19.interfaces;
+package dietel_c17.c19.functional_interfaces;
 
 import java.util.function.DoubleToIntFunction;
 
@@ -8,5 +8,7 @@ public class DoubleToIntFunctionSample {
 
         int number = doubleToIntFunction.applyAsInt(24.5);
         System.out.println(number);
+
+
     }
 }

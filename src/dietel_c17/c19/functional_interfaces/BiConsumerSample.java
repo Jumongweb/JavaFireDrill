@@ -1,4 +1,4 @@
-package dietel_c17.c19.interfaces;
+package dietel_c17.c19.functional_interfaces;
 
 import java.util.Map;
 import java.util.function.BiConsumer;

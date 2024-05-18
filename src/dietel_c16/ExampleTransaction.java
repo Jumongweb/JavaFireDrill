@@ -10,9 +10,9 @@ public class ExampleTransaction {
             return nextTransaction.getAmount().compareTo(previousTransaction.getAmount());
         };
         Set<Transaction> transactions = new TreeSet<>(comparator);
-        transactions.add(new Transaction());
-        transactions.add(new Transaction());
-        transactions.add(new Transaction());
+//        transactions.add(new Transaction());
+//        transactions.add(new Transaction());
+//        transactions.add(new Transaction());
 
     }
 }
