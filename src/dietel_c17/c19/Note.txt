@@ -1,0 +1,13 @@
+Intermediate ops
+1. filter()
+2. Map()
+3. FlatMap()
+4. Limit()
+5. sorted()
+6. distinct()
+
+Terminal ops
+1. reduce()
+2. forEach()
+3. count()
+4. collect()

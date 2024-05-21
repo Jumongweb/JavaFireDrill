@@ -17,8 +17,11 @@ public class Transaction  /*implements Comparable<Transaction> */{
         return accountNumber;
     }
 
-//    @Override
-//    public int compareTo(Transaction o) {
-//        return 0;
-//    }
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "amount='" + amount + '\'' +
+                ", accountNumber='" + accountNumber + '\'' +
+                '}';
+    }
 }
