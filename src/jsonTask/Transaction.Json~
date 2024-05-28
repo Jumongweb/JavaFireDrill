@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "John Smith",
+    "amount": 2000.00,
+    "type": "DEBIT",
+    "date": "2014-05-16"
+  },
+  {
+    "id": 2,
+    "name": "John Smith",
+    "amount": 3000.00,
+    "type": "DEBIT",
+    "date": "2014-05-16"
+  },
+  {
+    "id": 3,
+    "name": "John Smith",
+    "amount": 2000.00,
+    "type": "CREDIT",
+    "date": "2014-05-16"
+  },
+  {
+    "id": 4,
+    "name": "John Smith",
+    "amount": 1000.00,
+    "type": "DEBIT",
+    "date": "2014-05-16"
+  },
+  {
+    "id": 5,
+    "name": "John Smith",
+    "amount": 1000.00,
+    "type": "DEBIT",
+    "date": "2014-05-16"
+  }
+
+]
